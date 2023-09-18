@@ -111,4 +111,71 @@ const handleLogin = ()=> {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+.form-register {
+  width: 100%;
+  max-width: 600px;
+  padding: 0px;
+  margin: 10px auto auto auto;
+  background-color: #75C2F6;
+  border-radius: 0px 0px 15px 15px;
+}
+.form-header{
+  background-color: #1D5D9B;
+  color: white;
+  border-radius: 0px 0px 15px 15px;
+  padding: 10px;
+  text-align: center;
+}
+.btn-main{
+  background-color: #1D5D9B;
+  padding: 10px 0px 10px 0px;
+  height: 100%;
+  width: 30%;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  text-align: center;
+}
+
+.errtext{
+  background-color: #ebeb39;
+  border-radius: 15px;
+  color: red;
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.form-item{
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+  color: white;
+  justify-content: center;
+
+}
+.form-item label{
+  background-color: #1D5D9B;
+  width: 30%;
+  border-radius: 15px 0px 0px 15px;
+  color: white;
+  text-align:left;
+  padding: 15px;
+}
+.form-item input{
+  width: 70%;
+  border-radius: 0px 15px 15px 0px;
+  background-color: #FDFDC9;
+}
+.form-item .form-floating:focus-within {
+  z-index: 2;
+}
+.form-container {
+  width: 100%;
+  background-color: #75C2F6;
+  padding: 10px 25px 5px 25px;
+  box-shadow: -30px 30px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 0px 15px 15px;
+}
 </style>
