@@ -1,6 +1,7 @@
 <script setup>
+import { defineProps} from "vue";
     import { provide,inject } from "vue";
-    const props = defineProps(['title']);
+    defineProps(['title']);
     const selectedTitle = inject("selectedTitle");
     provide("selectedTitle");
 </script>

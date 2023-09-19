@@ -27,7 +27,7 @@ const getData = () => {
         <div class="title-statistic">
             users
         </div>
-    	</div>
+		</div>
 		</div>
 
 		<div class="circle-container">
@@ -38,7 +38,7 @@ const getData = () => {
         <div class="title-statistic">
             teams
         </div>
-    	</div>
+	</div>
 		</div>
 
 
@@ -50,7 +50,7 @@ const getData = () => {
         <div class="title-statistic">
             projects
         </div>
-    	</div>
+		</div>
 		</div>
 
 
@@ -62,7 +62,7 @@ const getData = () => {
         <div class="title-statistic">
             tasks
         </div>
-    	</div>
+		</div>
 		</div>
 </template>
 

@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref, watchEffect} from 'vue';
+import {onMounted, ref, watchEffect,defineProps} from 'vue';
 import {$axios} from '../utils/request'
 
 const updatedPermissions = ref([]);

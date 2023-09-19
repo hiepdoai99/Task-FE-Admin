@@ -4,7 +4,7 @@ import TabWrapper from '../components/TabWrapper.vue';
 import StatisticComponent from '../components/StatisticComponent.vue';
 import UserTableList from '../components/UserTablelist.vue';
 import TeamTableList from '../components/TeamTableList.vue'
-import RolesList from '../components/Permisstions.vue'
+import RolesList from '../components/PermissionPage.vue'
 </script>
 
 <template>

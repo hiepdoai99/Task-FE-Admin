@@ -2,8 +2,6 @@
 import {$axios} from '../utils/request'
 import BaseModal from '../components/BaseModal.vue'
 import ViewModal from '../components/ViewPermisstionModal.vue'
-
-import VPagination from "@hennge/vue3-pagination"
 import "@hennge/vue3-pagination/dist/vue3-pagination.css"
 
 import {
@@ -15,7 +13,6 @@ const roles = ref([]);
 const permissions = ref([]);
 let disabledCheck = true;
 const input = ref('');
-const currentPage = ref(1);
 const modalActive = ref(null);
 const id_role = ref([]);
 

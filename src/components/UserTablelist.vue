@@ -2,7 +2,7 @@
 import {$axios} from '../utils/request'
 import BaseModal from '../components/BaseModal.vue'
 import ViewUserModal from '../components/ViewUserModal.vue'
-
+import {useRoute} from 'vue-router'
 import VPagination from "@hennge/vue3-pagination"
 import "@hennge/vue3-pagination/dist/vue3-pagination.css"
 import {
@@ -10,7 +10,7 @@ import {
     ref
 } from "vue";
 
-
+const route = useRoute()
 let localPermissions = JSON.parse(localStorage.getItem('permissions'))
 let selectedToDelUserId = ref();
 const beforeDeleteModal = ref(null);
@@ -20,6 +20,8 @@ const input = ref('')
 let canEdit =ref(false)
 const currentPage = ref(1);
 const payloadData = ref([]);
+const modalWarningActive = ref(null);
+const id = route.params.id ?? null;
 let maxPage = 5;
 let userdetail = ref()
 
@@ -31,14 +33,14 @@ const toggleBeforeDeleteModal = () => {
   beforeDeleteModal.value = !beforeDeleteModal.value;
 };
 
+const toggleWarningModal = () => {
+  modalWarningActive.value = !modalWarningActive.value;
+};
+
 onMounted(() => {
     getData()
 		editTaskRoleCheck()
 })
-
-const toggleWarningModal = () => {
-  modalWarningActive.value = !modalWarningActive.value;
-};
 
 const showDetail = (id) => {
 	let item = JSON.parse(JSON.stringify(users.value))
@@ -103,7 +105,7 @@ const deleteUser = () => {
     $axios.post('/remove-user-team/' + {
 			team_id: id,
 			user_id: selectedToDelUserId
-		}).then(res => {
+		}).then(() => {
         getData(id)
     })
 }
@@ -187,7 +189,14 @@ const deleteUser = () => {
 				active-color="#FDFDC9"
 				@update:modelValue="onClickHandler"
 			/>
-		</div>	
+		</div>
+        
+        <BaseModal
+		:modalActive="modalWarningActive"
+		@close-modal="toggleWarningModal"
+	>		
+		We are sorry but you do not have the permission to do this action
+	</BaseModal>
 </template>
 
 

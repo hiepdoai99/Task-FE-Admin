@@ -25,9 +25,9 @@ const handleLogin = ()=> {
             if (data.data.access_token){
             localStorage.setItem('token',data.data.access_token)
             localStorage.setItem('user',JSON.stringify(data.data.user) )
-            userdata = data.data.user
+            userdata.value = data.data.user
             store.state.userLoginData = data.data.user
-            $axios.get(`/user/${userdata.id}?include=roles,permissions`).then((data) => {
+            $axios.get(`/user/${userdata.value.id}?include=roles,permissions`).then((data) => {
                 store.state.userLoginRole = data.data.data.roles[0].name
 								localStorage.setItem('loginRole',store.state.userLoginRole)
 								localStorage.setItem('permissions',(JSON.stringify(data.data.data.permissions)))

@@ -1,7 +1,7 @@
-import Login from "../views/Login.vue";
+import Login from "../views/LoginPage.vue";
 import Index from "../views/Index.vue";
 import AdminPage from "../views/AdminPage.vue";
-import Logout from "../views/Logout.vue";
+import Logout from "../views/LogoutPage.vue";
 import EditUser from "../views/EditUser.vue";
 import NotFoundPage from "../views/NotFoundPage.vue";
 import AddTeam from "../views/AddTeam.vue";
@@ -59,7 +59,7 @@ const routeGuarding = (to) => {
             };
         }
     } else if (currRouteName === "todo") {
-        if (selectedProjectId !== null) {
+        if (selectedProjectId.value !== null) {
             return true;
         } else {
             return {
