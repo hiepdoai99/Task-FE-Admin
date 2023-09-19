@@ -1,16 +1,12 @@
 <script setup>
 import {$axios} from '../utils/request'
-import {useRouter} from 'vue-router'
-import { reactive, ref, onMounted} from "vue";
-import userVuelidate from '@vuelidate/core'
-import {required} from '@vuelidate/validators'
+import { reactive, ref, onMounted,defineProps} from "vue";
 const props = defineProps({
   taskdetail: Object,
 });
 
-const router = useRouter()
 
-let userLocalData= ref({})
+let userLocalData= {}
 let userLocalID = ref('')
 
 onMounted(()=>{
@@ -26,14 +22,12 @@ const formState = reactive({
     task_id: '',
 })
 
-const rules = {
-    content: {required},
-    user_id: {required},
-    task_id: {required},
-}
-
-
-const v$ = userVuelidate(rules, formState)
+// const rules = {
+//     content: {required},
+//     user_id: {required},
+//     task_id: {required},
+// }
+//const v$ = userVuelidate(rules, formState)
 
 const statusStyleSet = (statusname) =>{
 	if (statusname === 'Todo'){
@@ -68,8 +62,9 @@ const sendComment = async () => {
             task_id: formState.task_id,
 					})
             .then(
-            (data) => {
-							location.replace('http://task.local/todo')
+				//(data)
+            () => {
+							location.replace('https://task.pics/todo')
             }
         )
 }
@@ -129,22 +124,22 @@ const sendComment = async () => {
 									<span class="form-control"> {{ comments.content }}</span>
 							</div>
 					</form>
-    		</div>
+			</div>
 
-				<div class="form-register">
-					<h3 class="form-header"> Send comments</h3>
-					<form class="form-container" enctype="multipart/form-data">
+			<div class="form-register">
+				<h3 class="form-header"> Send comments</h3>
+				<form class="form-container" enctype="multipart/form-data">
 
-							<div class="form-item">
-									<label>Comments</label>
-									<textarea v-model="formState.content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-							</div>
+						<div class="form-item">
+								<label>Comments</label>
+								<textarea v-model="formState.content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						</div>
 
-							<div class="form-item">
-									<button @click="sendComment" class="btn-main" type="button">Send</button>
-							</div>
-					</form>
-    		</div>
+						<div class="form-item">
+								<button @click="sendComment" class="btn-main" type="button">Send</button>
+						</div>
+				</form>
+			</div>
       </div>
 		</div>
 	</div>
@@ -163,7 +158,7 @@ const sendComment = async () => {
 				table{
 					width: 100%;
 					background-color: #75C2F6;
-    			border-radius: 15px;
+					border-radius: 15px;
 					margin-right: 0px;
 					//text-align: center;
 				}

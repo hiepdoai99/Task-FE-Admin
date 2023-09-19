@@ -1,4 +1,5 @@
 <script setup>
+import { defineProps,defineEmits} from "vue";
 defineEmits(["close-modal"]);
 defineProps({
   modalActive: {

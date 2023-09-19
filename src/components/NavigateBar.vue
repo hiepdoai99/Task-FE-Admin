@@ -1,10 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import {$axios} from "../utils/request.js";
-import {useRouter, useRoute} from 'vue-router';
+import {useRouter} from 'vue-router';
 import store from '../store/store'
 const router = useRouter()
-const route = useRoute()
 let roledata = ref('')
 
 // const trackRole = computed(() => {
@@ -13,8 +12,6 @@ let roledata = ref('')
 
 let isOpen = ref(false);
 let adminVisible = ref(false);
-let memberVisible = ref(false);
-let teamLeaderVisible = ref(false);
 let loginVisible = ref(true);
 let logoutVisible = ref(false);
 let workspaceVisible = ref(false);
@@ -32,24 +29,19 @@ onMounted(()=>{
 
 const afterLoginRoleCheck = () =>{
 		window.addEventListener('role-added', () => {
-    roledata = localStorage.getItem('loginRole');
-		//console.log('roledata login check here',roledata)
+    roledata.value = localStorage.getItem('loginRole');
+		//console.log('roledata.value login check here',roledata.value)
 
-		if (roledata === 'ROOT' || roledata ==="ADMIN"){
+		if (roledata.value === 'ROOT' || roledata.value ==="ADMIN"){
 			adminVisible.value = !adminVisible.value
-			memberVisible.value = !memberVisible.value
 			loginVisible.value = !loginVisible.value
-			teamLeaderVisible.value = !teamLeaderVisible.value
 			logoutVisible.value = !logoutVisible.value		
 			workspaceVisible.value = !workspaceVisible.value	
-		}else if (roledata === 'TEAMLEADER') {
-			memberVisible.value = !memberVisible.value
+		}else if (roledata.value === 'TEAMLEADER') {
 			loginVisible.value = !loginVisible.value
-			teamLeaderVisible.value = !teamLeaderVisible.value
 			logoutVisible.value = !logoutVisible.value
 			workspaceVisible.value = !workspaceVisible.value		
-		} else if (roledata === 'MEMBER') {
-			memberVisible.value = !memberVisible.value
+		} else if (roledata.value === 'MEMBER') {
 			loginVisible.value = !loginVisible.value
 			logoutVisible.value = !logoutVisible.value
 			workspaceVisible.value = !workspaceVisible.value		
@@ -58,24 +50,19 @@ const afterLoginRoleCheck = () =>{
 }
 
 const afterReloadRolecheck = () =>{
-    roledata = localStorage.getItem('loginRole');
-		//console.log('roledata reload check here',roledata)
+    roledata.value = localStorage.getItem('loginRole');
+		//console.log('roledata.value reload check here',roledata.value)
 
-		if (roledata === 'ROOT' || roledata ==="ADMIN"){
+		if (roledata.value === 'ROOT' || roledata.value ==="ADMIN"){
 			adminVisible.value = !adminVisible.value
-			memberVisible.value = !memberVisible.value
 			loginVisible.value = !loginVisible.value
-			teamLeaderVisible.value = !teamLeaderVisible.value
 			logoutVisible.value = !logoutVisible.value
 			workspaceVisible.value = !workspaceVisible.value		
-		} else if (roledata === 'TEAMLEADER') {
-			memberVisible.value = !memberVisible.value
+		} else if (roledata.value === 'TEAMLEADER') {
 			loginVisible.value = !loginVisible.value
-			teamLeaderVisible.value = !teamLeaderVisible.value
 			logoutVisible.value = !logoutVisible.value
 			workspaceVisible.value = !workspaceVisible.value		
-		} else if (roledata === 'MEMBER') {
-			memberVisible.value = !memberVisible.value
+		} else if (roledata.value === 'MEMBER') {
 			loginVisible.value = !loginVisible.value
 			logoutVisible.value = !logoutVisible.value
 			workspaceVisible.value = !workspaceVisible.value		
@@ -109,7 +96,7 @@ const logout = () =>{
 			</button>
 			<div :class="isOpen === true ? 'collapse navbar-collapse show' : 'collapse navbar-collapse' " id="navbarSupportedContent">
 				<ul class="navbar-nav">
-					<li v-show="memberVisible === true || adminVisible === true" class="nav-item">
+					<li v-show="adminVisible === true" class="nav-item">
 						<a class="nav-link" href="#">
 								<span v-if="store.state.userLoginData.first_name !== undefined">
 									WELCOME! {{ roledata }} user, {{store.state.userLoginData.first_name}} {{store.state.userLoginData.last_name}}

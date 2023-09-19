@@ -1,5 +1,6 @@
 <script setup>
-const props = defineProps({
+import {defineProps} from 'vue';
+defineProps({
   userdetail: Object,
 });
 </script>

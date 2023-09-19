@@ -10,7 +10,7 @@ import BaseModal from '../components/BaseModal.vue'
 import ViewUserModal from '../components/ViewUserModal.vue'
 const router = useRouter()
 const route = useRoute()
-let teamDetail = ref()
+//let teamDetail = ref()
 let localPermissions = JSON.parse(localStorage.getItem('permissions'))
 const usersOfTeam = ref([])
 const projectsOfTeam = ref([])
@@ -31,7 +31,7 @@ const getTeam = (id) => {
         (res) => {
             if (res) {
                 formState.name = res.data.data.name;
-								teamDetail = res.data.data
+								//teamDetail = res.data.data
 								
             }
         }
@@ -62,7 +62,7 @@ const addTeam = async () => {
         $axios.post('/team', {
             name: formState.name,})
             .then(
-                (data) => {
+                () => {
                     router.push('/team')
                 }
             )
@@ -74,7 +74,7 @@ const edit = () => {
         name: formState.name,
 
     }).then(
-        (data) => {
+        () => {
             router.push('/team')
         }
     )
@@ -104,7 +104,7 @@ const deleteUser = () => {
     $axios.post('/remove-user-team/' + {
 			team_id: id,
 			user_id: selectedToDelUserId
-		}).then(res => {
+		}).then(() => {
         getData(id)
     })
 }

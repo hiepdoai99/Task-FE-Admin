@@ -1,14 +1,13 @@
 <template>
-
+<div></div>
 </template>
 
 <script setup>
 import {$axios} from '../utils/request'
-import {useRouter, useRoute} from 'vue-router'
-import {onMounted, watch} from "vue";
+import {useRouter} from 'vue-router'
+import {onMounted, } from "vue";
 
 const router = useRouter()
-const route = useRoute()
 
 onMounted(() => {
         const token = localStorage.getItem('token');

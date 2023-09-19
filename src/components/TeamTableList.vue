@@ -1,9 +1,8 @@
 <script setup>
 import {$axios} from '../utils/request'
-import {useRouter, useRoute} from 'vue-router'
 import VPagination from "@hennge/vue3-pagination"
 import "@hennge/vue3-pagination/dist/vue3-pagination.css"
-import store from '../store/store'
+
 import BaseModal from '../components/BaseModal.vue'
 import ViewTeamModal from '../components/ViewTeamModal.vue'
 import {
@@ -11,8 +10,6 @@ import {
     ref
 } from "vue";
 
-const router = useRouter()
-const route = useRoute()
 let localPermissions = JSON.parse(localStorage.getItem('permissions'))
 const viewDetailModal = ref(null);
 let teamdetail = ref()
@@ -22,6 +19,10 @@ const currentPage = ref(1)
 let canEdit = ref(false)
 const payloadData = ref([]);
 let maxPage = 5;
+const modalWarningActive = ref(null);
+const toggleWarningModal = () => {
+  modalWarningActive.value = !modalWarningActive.value;
+};
 
 const showDetail = (id) => {
 	let item = JSON.parse(JSON.stringify(teams.value))
@@ -91,7 +92,7 @@ const getData = () => {
 		localPermissions= localPermissions.map(e => e.name)
 }
 const deleteobj = (teamId) => {
-    $axios.delete('/team/' + teamId).then(res => {
+    $axios.delete('/team/' + teamId).then(() => {
         getData()
     })
 }
@@ -151,6 +152,13 @@ const deleteobj = (teamId) => {
 		@close-modal="toggleModal"
 	>
 		<ViewTeamModal :taskdetail="teamdetail"/>
+	</BaseModal>
+
+	<BaseModal
+		:modalActive="modalWarningActive"
+		@close-modal="toggleWarningModal"
+	>		
+		We are sorry but you do not have the permission to do this action
 	</BaseModal>
 
 	<div class="pagination-body">

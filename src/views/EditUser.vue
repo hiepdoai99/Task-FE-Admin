@@ -71,10 +71,10 @@ const edit = async () => {
 			password: formState.password,
 			roles: formState.user_role
     }).then(
-        (data) => {
+        () => {
             router.push('/')
         }
-    	)
+        )
     }
 }
 
