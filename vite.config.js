@@ -10,7 +10,7 @@ export default defineConfig({
         VitePWA({
             registerType: "autoUpdate",
             manifest: {
-              name: "pwa-task-app",
+              name: "pwa-admin-task-app",
               short_name: "PTA",
               theme_color: "#4DBA87",
               icons: [
