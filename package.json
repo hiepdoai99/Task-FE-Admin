@@ -5,8 +5,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "watch": "vite build --watch",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "watch": "vite build --watch"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
