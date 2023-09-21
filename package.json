@@ -5,7 +5,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "watch": "vite build --watch"
+    "watch": "vite build --watch",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -44,7 +45,8 @@
     "laravel-vite-plugin": "^0.7.5",
     "sass": "^1.66.1",
     "sass-loader": "^10.4.1",
-    "vite": "^4.0.0"
+    "vite": "^4.0.0",
+    "vite-plugin-pwa": "^0.16.5"
   },
   "eslintConfig": {
     "root": true,
