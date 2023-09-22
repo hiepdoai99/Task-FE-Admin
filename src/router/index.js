@@ -1,5 +1,5 @@
 import Login from "../views/LoginPage.vue";
-import Index from "../views/Index.vue";
+import Index from "../views/IndexPage.vue";
 import AdminPage from "../views/AdminPage.vue";
 import Logout from "../views/LogoutPage.vue";
 import EditUser from "../views/EditUser.vue";
